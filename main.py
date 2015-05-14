@@ -1,24 +1,29 @@
-import tty
-import sys
-import random
+import os, sys, tty, random
 from tput import*
 from blocks import*
 from creatures import*
 
-world = [[[[0 for x in range(3)] for x in range(20)] for x in range(20)] for x in range(20)]
-tty.setcbreak(sys.stdin)
-
-world[10][15][13][1] = 1
+worldx = 24
+worldy = 80
+worldz = 20
+world = [[[[0 for x in range(3)] for x in range(worldx)] for x in range(worldy)] for x in range(worldz)]
+tty.setraw(sys.stdin)
+os.system('setterm -cursor off')
 	
 while True:
-	for x in range(20):
-		for y in range(20):
-			print(bc[blocknummer[world[10][x][y][0]].saybg()] + fc[creaturenummer[world[10][x][y][1]].sayfc()] + creaturenummer[world[10][x][y][1]].saychar(), end="")
-		print(bc[1] + fc[2] + "")
+	line = ""
+	for x in range(worldx):		
+		for y in range(worldy):
+			line += (bc[blocknummer[world[10][y][x][0]].saybg()] + fc[creaturenummer[world[10][y][x][1]].sayfc()] + creaturenummer[world[10][y][x][1]].saychar())
+		if x != worldx - 1:
+			line += ("\r\n")
+		else:
+			line += ("\r")
+	print(line)
 	ch = sys.stdin.read(1)
-	if ch == "a":
-		world[10][random.randint(0,19)][random.randint(0,19)][1] = 1
-	elif ch == "b":
-		world[10][random.randint(0,19)][random.randint(0,19)][1] = 2
+	if ch == "h":
+		world[10][random.randint(0,worldy - 1)][random.randint(0,worldx - 1)][1] = 1
+	elif ch == "c":
+		world[10][random.randint(0,worldy - 1)][random.randint(0,worldx - 1)][1] = 2
 	elif ch == "q":
 		break
