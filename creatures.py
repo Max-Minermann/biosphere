@@ -12,6 +12,7 @@ class creature:
 
 nobody = creature(" ", 0)
 human = creature("☺", 7)
+cat = creature("c", 1)
 
-creaturenummer = [nobody, human]
+creaturenummer = [nobody, human, cat]
 
