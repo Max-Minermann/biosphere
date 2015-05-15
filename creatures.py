@@ -10,7 +10,7 @@ class creature:
 	def sayfc(self):
 		return self.color
 
-nobody = creature(" ", 0)
+nobody = creature("t", 0)
 human = creature("☺", 7)
 cat = creature("c", 1)
 
