@@ -8,17 +8,17 @@ worldy = 80
 worldz = 20
 world = [[[[0 for x in range(3)] for x in range(worldx)] for x in range(worldy)] for x in range(worldz)]
 tty.setcbreak(sys.stdin)
-os.system('setterm -cursor off')
+os.system("setterm -cursor off")
 	
 while True:
-	line = ""
 	for x in range(worldx):
+		line = ""
 		for y in range(worldy):
 			line += (bc[blocknummer[world[10][y][x][0]].saybg()] + fc[creaturenummer[world[10][y][x][1]].sayfc()] + creaturenummer[world[10][y][x][1]].saychar())
-	if x == worldx -1:
-		print(line, end="")
-	else:
-		print(line)
+		if x == worldx -1:
+			print(line, end="\r")
+		else:
+			print(line)
 	ch = sys.stdin.read(1)
 	if ch == "h":
 		world[10][random.randint(0,worldy - 1)][random.randint(0,worldx - 1)][1] = 1
