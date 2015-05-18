@@ -17,22 +17,30 @@ class block(thing):
 	def __init__(self, bc, fc, char):
 		super().__init__(bc, fc, char)
 
-class creature(thing):
+class living(thing):
 	def __init__(self, bc, fc, char):
 		super().__init__(bc, fc, char)
 
-#things
-nothing = block(0, 0, " ")
+class creature(living):
+	def __init__(self, bc, fc, char):
+		super().__init__(bc, fc, char)
+		
+#####things
+nothing = thing(0, 0, " ")
 
-#blocks
+####blocks
 stone = block(7, 7, " ")
 dirt = block(3, 3, " ")
 
-#Creatures
-human = creature(0, 7, "☺")
-cat = creature(0, 1, "C")
+####Living
+
+###Creature
+nobody = living(0, 0, " ")
+human = living(0, 7, "☺")
+cat = living(0, 1, "C")
 
 #List
 blocknummer = [stone, dirt]
-creaturenummer = [human, cat]
-thingnummer = [nothing, blocknummer, creaturenummer]
+creaturenummer = [nobody, human, cat]
+livingnummer = [creaturenummer]
+thingnummer = [nothing, blocknummer, livingnummer]
